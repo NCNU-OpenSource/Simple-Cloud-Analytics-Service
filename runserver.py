@@ -1,6 +1,7 @@
 import pymysql,threading,os 
 from datetime import datetime
 
+# Status Check
 def check_worker_status():
     global conn
     global check_time_interval
