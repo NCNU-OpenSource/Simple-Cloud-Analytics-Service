@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <title>簡易雲端數據分析服務</title>
+
+  <!-- Main styles for this application -->
+  {% load staticfiles %}
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <!-- Styles required by this views -->
+
+  <script src="{% static 'js/Chart.bundle.js' %}"></script>
+  <script src="{% static 'js/utils.js' %}"></script>
+  <style>
+  canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+  </style>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+  <header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </header>
+
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/tensor/index/"> Deshboard <span class="badge badge-info">Not Set</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tensor/tensorflow_test/"> tensorflow test </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tensor/NeuralNetwork/"> Neural Network </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tensor/kmeans/"> K-means </a>
+          </li>
+        </ul>
+      </nav>
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <div class="container-fluid">
+        {% block mainbody %}
+        {% endblock %}
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+  <footer class="app-footer">
+    <span></span>
+    <span class="ml-auto"></span>
+  </footer>
+
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- CoreUI main scripts -->
+
+  <script src="{% static 'js/app.js' %}"></script>
+
+  <!-- Plugins and scripts required by this views -->
+
+  <!-- Custom scripts required by this view -->
+  <script src="{% static 'js/views/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block mainbody %}
+{% if request.user.is_authenticated %}
+    <p>
+        {{request.user}} 您已經登入囉~
+        <a href="/tensor/logout/">登出</a>
+    </p>
+{% else %}
+    <p>您尚未登入喔~<a href="/tensor/login/">登入</a></p>
+{% endif %}
+{% endblock %}

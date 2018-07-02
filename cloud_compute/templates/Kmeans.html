@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block mainbody %}
+<script>
+	var color_pool = [
+	'',
+	'rgb(255, 99, 132)',
+	'rgb(75, 192, 192)',
+	'rgb(153, 102, 255)',
+	'rgb(201, 203, 207)',
+	'rgb(54, 162, 235)',
+	'rgb(255, 159, 64)',
+	'rgb(255, 205, 86)',
+	];
+	var color = Chart.helpers.color;
+	var scatterChartData = {
+		datasets: [
+		{% for group in cluster %}
+		{
+			label: {{ forloop.counter }},
+			borderColor: color_pool[{{forloop.counter}}],
+			backgroundColor: color(color_pool[{{forloop.counter}}]).alpha(0.2).rgbString(),
+			data: [
+					{% for attr in group %}
+					{
+						x:{{ attr.0 }},
+						y:{{ attr.1 }}
+					},
+					{% endfor %}
+			]
+		},
+		{% endfor %}
+		]
+	};
+
+	window.onload = function() {
+		var ctx = document.getElementById('canvas').getContext('2d');
+		window.myScatter = Chart.Scatter(ctx, {
+			data: scatterChartData,
+			options: {
+				title: {
+					display: true,
+					text: 'Kmeans Cluster'
+				},
+			}
+		});
+	};
+</script>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/tensor/index">Deshboard</a></li>
+    <li class="breadcrumb-item active">Kmeans</li>
+</ol>
+<div class="container-fluid">
+	<div class="animated fadeIn">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <div class="card">
+			<form action="/tensor/call_help/" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="method" value="Kmeans">
+			<div class="card-body p-4">
+			  <p class="text-muted">Kmeans Clustering Test</p>
+			  <div class="input-group mb-3">
+			    <div class="input-group-prepend">
+			      <span class="input-group-text"><i class="icon-user"></i></span>
+			    </div>
+			    <input type="text" class="form-control" placeholder="Number of Cluster" name="num_cluster">
+			  </div>
+			  <div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="icon-user"></i></span>
+				</div>
+				<input type="file" class="form-control" name="file">
+			  </div>
+			  <div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="icon-user"></i></span>
+				</div>
+				<select name="file_exist">
+					<option value="none">無</option>
+				    {% for data in data_list %}
+				    <option value="{{ data.title }}">{{ data.title }}</option>
+				    {% endfor %}
+				</select>
+			  </div>
+			  <center><input type="submit"></center>
+			</div>
+			</form>
+		  </div>
+			<canvas id="canvas"></canvas>
+	    </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

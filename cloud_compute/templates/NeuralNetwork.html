@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block mainbody %}
+<script>
+	var config = {
+		type: 'line',
+		data: {
+			labels: [
+				{% for i in day_range %}
+				'{{ day_start | add:i }}',
+				{% endfor %}
+			],
+			datasets: [{
+				label: 'Estimated',
+				fill: false,
+				backgroundColor: window.chartColors.blue,
+				borderColor: window.chartColors.blue,
+				data: [
+					{% for y in y_list %}
+					'{{ y }}',
+					{% endfor %}
+				],
+			},
+			{
+				label: 'Observed',
+				backgroundColor: window.chartColors.red,
+				borderColor: window.chartColors.red,
+				data: [
+					{% for x in x_list %}
+					'{{ x }}',
+					{% endfor %}
+				],
+				fill: false,
+			}]
+		}
+	};
+
+	window.onload = function() {
+		/*
+		$.ajax({
+	        url:"'../../../../controller/get_modal_view_info.php?ID="+ID+"&dt="+dt+"&opr="+opr+"&i="+i,
+	        // cache:false,
+	        success:function(result){
+	        	$(".modal-content").html(result);
+	            
+	        }
+	    });
+	    */
+	    var ctx = document.getElementById('canvas').getContext('2d');
+		window.myLine = new Chart(ctx, config);
+	};
+</script>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/tensor/index">Deshboard</a></li>
+    <li class="breadcrumb-item active">Neural Network</li>
+</ol>
+<div class="container-fluid">
+	<div class="animated fadeIn">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <div class="card">
+			<form action="/tensor/call_help/" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="method" value="NN">
+			<div class="card-body p-4">
+			  <p class="text-muted">Neural Network Test</p>
+			  <div class="input-group mb-3">
+			    <div class="input-group-prepend">
+			      <span class="input-group-text"><i class="icon-user"></i></span>
+			    </div>
+			    <input type="text" class="form-control" placeholder="Number of Test Data" name="testdata_num">
+			  </div>
+			  <div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="icon-user"></i></span>
+				</div>
+				<input type="text" class="form-control" placeholder="Iteration times" name="iteration_times">
+			  </div>
+			  <div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="icon-user"></i></span>
+				</div>
+				<input type="file" class="form-control" name="file">
+			  </div>
+			  <div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="icon-user"></i></span>
+				</div>
+				<select name="file_exist">
+					<option value="none">無</option>
+				    {% for data in data_list %}
+				    <option value="{{ data.title }}">{{ data.title }}</option>
+				    {% endfor %}
+				</select>
+			  </div>
+			  <center><input type="submit"></center>
+			</div>
+			</form>
+		  </div>
+			<canvas id="canvas"></canvas>
+	    </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

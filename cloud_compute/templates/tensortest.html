@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block mainbody %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/tensor/index">Deshboard</a></li>
+    <li class="breadcrumb-item active">Test</li>
+</ol>
+<div class="container-fluid">
+	<div class="animated fadeIn">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <div class="card">
+			<form action="/tensor/call_help/" method="post">
+			<input type="hidden" name="method" value="tensorflow_test">
+			<div class="card-body p-4">
+			  <p class="text-muted">Tensorflow Test</p>
+			  <div class="input-group mb-3">
+			    <div class="input-group-prepend">
+			      <span class="input-group-text"><i class="icon-user"></i></span>
+			    </div>
+			    <input type="text" class="form-control" placeholder="Iteration times" name="iteration_times">
+			  </div>
+			  <center><input type="submit"></center>
+			</div>
+			</form>
+		  </div>
+		  <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">iteration_times</th>
+                <th class="text-center">variable1</th>
+                <th class="text-center">variable2</th>
+                <th class="text-center">variable3</th>
+                <th class="text-center">loss</th>
+              </tr>
+            </thead>
+            <tbody>
+			  {% for result in result_list %}
+			  <tr>
+	              <td class="text-center">
+	              	{{forloop.counter}}
+	              </td>
+	              <td class="text-center">
+	              	{{result.iteration_times}}
+	              </td>
+	              <td class="text-center">
+	              	{{result.variable1}}
+	              </td>
+	              <td class="text-center">
+	              	{{result.variable2}}
+	              </td>
+	              <td class="text-center">
+	              	{{result.variable3}}
+	              </td>
+	              <td class="text-center">
+	              	{{result.loss}}
+	              </td>
+			  </tr>
+		   	  {% endfor %}
+		   	</tbody>
+      	  </table>
+	    </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
