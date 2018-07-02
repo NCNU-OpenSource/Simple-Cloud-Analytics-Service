@@ -4,6 +4,10 @@
 
 ![概念圖](https://i.imgur.com/YzJQHJY.png)
 
+# 設置說明
+runserver.py :
+/etc/uwsgi9000.ini
+
 # 組員名單
 資管三 趙守恩
 
