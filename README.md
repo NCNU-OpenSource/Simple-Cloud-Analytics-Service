@@ -4,6 +4,10 @@
 
 ![概念圖](https://i.imgur.com/YzJQHJY.png)
 
+# Example
+
+![K-means](https://i.imgur.com/j5pW0o0.png)
+
 # 設置說明
 runserver.py :
 /etc/uwsgi9000.ini
