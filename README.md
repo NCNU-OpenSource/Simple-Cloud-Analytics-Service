@@ -12,7 +12,3 @@
 runserver.py :
 /etc/uwsgi9000.ini
 
-# 組員名單
-資管三 趙守恩
-
-資管三 蔡政佟
