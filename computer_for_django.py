@@ -185,11 +185,11 @@ def regularly_send_status():
 ##
 username = "cluster_worker"
 password = "worker_password"
-server_IP = "10.105.15.142"
+server_IP = ""
 time_send_status = 3.0
 ##
 
-hostIP = "10.105.15.142"
+hostIP = ""
 port = 12343
 isBusy = False
 regularly_send_status()
