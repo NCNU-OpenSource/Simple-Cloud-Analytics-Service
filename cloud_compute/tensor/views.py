@@ -53,7 +53,7 @@ def NeuralNetwork(request):
 def kmeans(request):
 	obj = models.Kmeans_result.objects.all().order_by('-ID')[0]
 	label_list = obj.labels.split(',')[:-1]
-	file_path = settings.MEDIA_ROOT+'/file/'+obj.data_file_name
+	file_path = settings.MEDIA_URL+'/file/'+obj.data_file_name
 	num_cluster = 0
 	for i in range(len(label_list)):
 		tmp = int(label_list[i])
@@ -95,11 +95,11 @@ def call_help(request):
 			print(request.POST.get('file_exist'))
 			if request.POST.get('file_exist') != "none":
 				file_name = request.POST.get('file_exist')
-				file_path = settings.MEDIA_ROOT+'/file/'+file_name
+				file_path = settings.MEDIA_URL+'/file/'+file_name
 				data = models.file.objects.filter(title=file_name)
 			else:
 				file = request.FILES['file']
-				file_path = settings.MEDIA_ROOT+'/file/'+file.name
+				file_path = settings.MEDIA_URL+'/file/'+file.name
 				data = models.file()
 				data.title = file.name
 				data.file = file
