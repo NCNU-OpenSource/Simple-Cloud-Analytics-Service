@@ -13,7 +13,7 @@
 
 # 執行
 web-server:
-python3 runserver.py
+> python3 runserver.py
 
 worker:
-python3 computer_for_django.py
+> python3 computer_for_django.py
