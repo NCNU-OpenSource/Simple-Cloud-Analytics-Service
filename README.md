@@ -12,4 +12,8 @@
 將 uwsgi9000.ini 放置於 /etc/
 
 # 執行
+web-server:
 python3 runserver.py
+
+worker:
+python3 computer_for_django.py
