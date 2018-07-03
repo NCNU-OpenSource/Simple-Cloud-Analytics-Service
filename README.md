@@ -9,7 +9,7 @@
 ![K-means](https://i.imgur.com/j5pW0o0.png)
 
 # 設置說明
-/etc/uwsgi9000.ini
+將 uwsgi9000.ini 放置於 etc
 
 # 執行
 python3 runserver.py
