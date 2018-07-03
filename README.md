@@ -11,5 +11,5 @@
 # 設置說明
 /etc/uwsgi9000.ini
 
-#執行
+# 執行
 python3 runserver.py
