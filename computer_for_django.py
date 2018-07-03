@@ -143,7 +143,7 @@ def excute_method(userID,server_IP,method_name,content):
 	elif method_name == "NeuralNetwork":
 		file_name = content[0].split('/')[-1]
 		print(content[0])
-		data = get_data_for_NN(content[0])
+		data = get_data_for_NN("http://"+server_IP+"/"+content[0])
 		parameter = content[1:]
 		result_string = neural_network(data[0],data[1],parameter)
 		parameter_string = "|"
@@ -152,7 +152,7 @@ def excute_method(userID,server_IP,method_name,content):
 		r = requests.post("http://"+server_IP+"/tensor/send_result_back/", data={'username': username,'password': password,'userID': userID,'method': method_name,'parameter': parameter_string,'result': result_string,'file_name': file_name})
 	elif method_name == "Kmeans":
 		file_name = content[0].split('/')[-1]
-		data_list = get_data_list_for_kmeans(content[0])
+		data_list = get_data_list_for_kmeans("http://"+server_IP+"/"+content[0])
 		cluster_num = content[1]
 		result_string = k_means_cluster(data_list, cluster_num)
 		parameter_string = "|"+str(cluster_num)+"|"
