@@ -35,16 +35,6 @@
 	};
 
 	window.onload = function() {
-		/*
-		$.ajax({
-	        url:"'../../../../controller/get_modal_view_info.php?ID="+ID+"&dt="+dt+"&opr="+opr+"&i="+i,
-	        // cache:false,
-	        success:function(result){
-	        	$(".modal-content").html(result);
-	            
-	        }
-	    });
-	    */
 	    var ctx = document.getElementById('canvas').getContext('2d');
 		window.myLine = new Chart(ctx, config);
 	};
